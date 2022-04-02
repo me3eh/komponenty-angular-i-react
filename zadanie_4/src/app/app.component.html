@@ -1,0 +1,50 @@
+<div>
+  <span><input placeholder="Filter data" type="text" [formControl]="customerFilter"/></span>
+  <div>
+    <input type="radio" id="name" name="drone" value="name" [formControl]="radioButtons">
+    <label for="name">{{ "name" | titlecase }}</label>
+  </div>
+
+  <div>
+    <input type="radio" id="surname" name="drone" [formControl]="radioButtons" value="surname">
+    <label for="surname">{{ "surname" | titlecase }}</label>
+  </div>
+
+  <div>
+    <input type="radio" id="amount" name="drone" [formControl]="radioButtons" value="amount">
+    <label for="amount">{{ "amount" | titlecase }}</label>
+  </div>
+  <ul>
+    <li *ngFor="let order of orders | filterOrders:filterValue : radioButtons.value">Customer: {{order.name}} {{order.surname}}
+      <div> Items:
+        <ol>
+          <li *ngFor="let item of order.items">{{item[0]}} {{item[1]}}</li>
+        </ol>
+      </div>
+      <div>Amount: {{order.amount| currency: 'EUR': 'symbol': '1.1-3':'pl'}}</div>
+    </li>
+
+  </ul>
+</div>
+<button (click)="showForm=true" *ngIf="!showForm">New order</button>
+<form #f="ngForm" *ngIf="showForm" [formGroup]="formModel" (ngSubmit)='addOrder()'>
+  <label for="name">Name: </label><input type="text" formControlName="name">
+  <label for="surname">Surname: </label><input type="text" formControlName="surname">
+
+  <div formArrayName="itemsArray">
+
+    <div *ngFor="let item of items.controls; let i=index" [formGroupName]="i">
+      <label>Item: </label>
+      <input type="text" formControlName="itemName">
+      <p *ngIf="item.errors?.['needName'] != null" style="color:red;">
+        If inputted quantity, need name
+      </p>
+      <label>Qty: </label>
+
+      <input type="number" formControlName="quantity">
+    </div>
+
+  </div>
+  <input *ngIf="formModel.valid" type="submit" value="Send ">
+</form>
+<button *ngIf="showForm" (click)="moreItems()">More items</button> {{formModel.valid}}
