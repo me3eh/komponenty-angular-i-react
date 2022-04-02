@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div style="display: flex;">
+
+            <div class="label_and_input">
+                <label id="first_label_above_input">First argument</label>
+                <input onchange="refresh_inputs(); isNumberCheck(0)" id="firstNumber" type="text" class="font-size"/>
+            </div>
+
+            <label id="mark" class="mark main_mark"> &nbsp;</label>
+
+            <div class="label_and_input">
+                <label id="second_label_above_input">Second argument</label>
+                <input onchange="refresh_inputs(); isNumberCheck(1);" id="secondNumber" type="text" class="font-size"/>
+            </div>
+
+            <label style="display: none;" class="mark" id="mark2"> &nbsp;</label>
+
+            <div class="label_and_input">
+                <label id="third_label_above_input" style="display:none;">Destination X</label>
+                <input onchange="refresh_inputs(); isNumberCheck(2);" style="display: none;" id="thirdNumber" type="text" class="font-size"/>
+            </div>
+
+            <label style="display: none;" id="mark3" class="mark"> &nbsp;</label>
+
+            <div class="label_and_input">
+                <label id="fourth_label_above_input" style="display:none;">Destination Y</label>
+                <input onchange="refresh_inputs(); isNumberCheck(3);" style="display: none;" id="fourthNumber" type="text" class="font-size"/>
+            </div>
+            
+            <label id="equal" class="mark">=</label>
+            <label id="score" class="mark"></label>
+            
+        </div>
+        <div id="actionMenu" style="margin-top:10px;">
+            <button onclick="addition()" id="addition" class="margin-right">+</button>
+            <button onclick="subtraction()" id="subtraction" class="margin-right">-</button>
+            <button onclick="multiplication()" id="multiplication" class="margin-right">*</button>
+            <button onclick="division()" id="division" class="margin-right">/</button>
+            <button onclick="exponentiation()" id="exponentiation" class="margin-right">x^</button>
+            <button onclick="menu_for_length_between_two_points_in_sea_miles();length_between_two_points_in_sea_miles();" 
+            id="length_between_two_points" class="margin-right">xy->xy</button>
+        </div>
+        <p id="result" style="color:red;font-style:italic;"></p>
+    </body>
+    <script src="index.js"></script>
+
+</html>

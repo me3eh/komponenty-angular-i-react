@@ -1,0 +1,19 @@
+.font-size{
+    font-size: 22px;
+}
+.margin-right{
+    margin-right:10px;
+}
+.label_and_input{
+    display: flex; 
+    flex-direction: column;
+}
+.mark{
+    font-size: 22px;
+    bottom: -20px;
+    position: relative;
+}
+.main_mark{
+    padding: 0 5px 0 5px;
+    width:10px;
+}
