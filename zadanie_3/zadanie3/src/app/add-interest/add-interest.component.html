@@ -1,0 +1,18 @@
+<form #f="ngForm">
+  <input minlength="3" name="interest" required [(ngModel)]="interest" #interestValue="ngModel" />
+  <div *ngIf="interestValue.errors?.['required'] != null">
+    <div style="color: red">Must input something</div>
+  </div>
+<!--  <div *ngIf="interest.length <= 0 && f.touched">-->
+<!--    <div style="color: red">Must input something</div>-->
+<!--  </div>-->
+  <div *ngIf="interestValue.errors?.['minlength'] != null">
+        <div style="color: red">Must be longer than 3 characters</div>
+  </div>
+<!--  <div *ngIf="interest.length < 3 && interest.length > 0 && f.touched">-->
+<!--    <div style="color: red">Must be longer than 3 characters</div>-->
+<!--  </div>-->
+  <button enabled *ngIf="f.valid" (click)="pushInterest()" >Dodaj</button>
+</form>
+
+

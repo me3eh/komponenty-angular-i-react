@@ -1,0 +1,19 @@
+<div style="display: flex">
+  <div class="all">
+    <h2>Mr</h2>
+    <h3>{{name | titlecase  }} {{surname | titlecase }}</h3>
+    <app-show-date [dateOfBirth]="dateOfBirth" format="yyyy-mm-dd"></app-show-date>
+    <p>Exam: {{0.789 | percent:'.2' }}</p>
+    <p>Deposit: {{ 192389.023 | currency: 'PLN': 'zł': '1.0-0' }}</p>
+    <p>Age: {{ 21.12 | number:'2.0-0' }}</p>
+    <p>Amount of money: {{ 1.23 | currency: 'PLN': 'zł': '1.0-2' }} </p>
+
+    <app-manage-interest-list [interestList]="interests" [selected]="selected" (selectInterestInParent)="select($event)"></app-manage-interest-list>
+    <app-add-interest [interestList]="interests" (pushInterestIntoArray)="pushIntoArray($event)"></app-add-interest>
+  </div>
+  <app-edit-interest [selected]="selected" [valueInInput]="interests[selected]"
+                     (editValueInArray)="editValueInArray($event)"
+                     (deleteInterestFromArray)="deleteFromArray($event)"
+                     (blankSelection)="blankSelection()"
+  ></app-edit-interest>
+</div>

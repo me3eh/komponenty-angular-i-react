@@ -1,0 +1,7 @@
+<div>Interests:
+  <ul>
+    <li *ngFor="let interest of interestList;index as i" (click)="selectInterest(i)" [class.selected]="i === selected">
+      {{interest}}
+    </li>
+  </ul>
+</div>

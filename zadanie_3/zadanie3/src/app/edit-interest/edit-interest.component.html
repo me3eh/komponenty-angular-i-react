@@ -1,0 +1,24 @@
+<div *ngIf="selected > -1" style="display: flex">
+  <div>
+    <h2>Edit:</h2>
+    <label>interest:
+      <form #f="ngForm">
+        <input [(ngModel)]="valueInInput" name="interest" minlength="3" required #interestValue="ngModel"/>
+<!--        <div *ngIf="valueInInput.length <= 0 && f.touched">-->
+<!--          <div style="color: red">Must input something</div>-->
+<!--        </div>-->
+        <div *ngIf="interestValue.errors?.['required']">
+          <div style="color: red">Must input something</div>
+        </div>
+<!--        <div *ngIf="valueInInput.length < 3 && valueInInput.length > 0 && f.touched">-->
+<!--          <div style="color: red">Must be longer than 3 characters</div>-->
+<!--        </div>-->
+        <div *ngIf="interestValue.errors?.['minlength']">
+          <div style="color: red">Must be longer than 3 characters</div>
+        </div>
+        <button *ngIf="f.valid" (click)="edit()">Save</button>
+        <app-delete-interest (deleteInterestFromArray)="deleteFromArray()"></app-delete-interest>
+      </form>
+    </label>
+  </div>
+</div>
