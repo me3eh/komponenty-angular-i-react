@@ -1,0 +1,33 @@
+<div>Interests:
+  <ul>
+    <li *ngFor="let interest of listOfIslands;index as i" (click)="select(i)" [class.selected]="i === selected">
+      {{ interest.naming }}
+    </li>
+  </ul>
+</div>
+<div *ngIf="selected > -1" [class.safe]="listOfIslands[selected].safe === true"
+     [class.danger]="listOfIslands[selected].safe === false">
+  <h2>Place</h2>
+  <div>
+    <h3>Date of Arrival</h3>
+    <label>{{ listOfIslands[selected].dateOfArrival | date: 'dd-MM-yyyy' }}</label>
+
+    <h3>Date of Departure</h3>
+    <label>{{ listOfIslands[selected].dateOfExiting | date: 'dd-MM-yyyy' }}</label>
+
+    <h3>Special Items</h3>
+      <li *ngFor="let interest of listOfIslands[selected].uniqueItems">
+        {{ interest }}
+      </li>
+    <h3>Number of Tribes</h3>
+    <label>{{ numberOfTribesDesc( listOfIslands[selected].numberOfTribes ) }}</label>
+    <div [ngStyle]="{'display': (hideSave == true) ? 'none' : 'block' }">
+      <br/>
+      <br/>
+      <input [(ngModel)]="listOfIslands[selected].naming" />
+      <button (click)="save()">Save</button>
+    </div>
+  </div>
+</div>
+
+

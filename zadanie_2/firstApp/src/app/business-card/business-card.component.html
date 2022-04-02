@@ -1,0 +1,23 @@
+<div class="all">
+    <h2>Mrs</h2>
+    <h3>{{name}} {{surname}}</h3>
+    <p class="birthdate"> Date of birth: {{dateOfBirth}}</p>
+    <div>Interests:
+        <ul>
+          <li *ngFor="let interest of interests;index as i" (click)="select(i)" [class.selected]="i === selected">
+            {{interest}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div *ngIf="selected > -1" >
+  <h2>Edit:</h2>
+  <div>
+    <label>
+      interest:
+      </label>
+        <input [(ngModel)]="interests[selected]" />
+        <button (click)="save()">Save</button>
+  </div>
+</div>
