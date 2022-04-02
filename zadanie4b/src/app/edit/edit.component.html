@@ -1,0 +1,22 @@
+<h2>Edit:</h2>
+<div>
+  <form #f="ngForm">
+    <label>
+      User id:
+    </label>
+    <input [(ngModel)]="copyOfComment.userId" #userId="ngModel" id="l1" type="number" name="userId" required />
+    <p *ngIf="userId.errors?.['required']">Pole dla userId wymagane</p>
+    <label>
+      Title:
+    </label>
+    <input [(ngModel)]="copyOfComment.title" #title="ngModel" name="title" required/>
+    <p *ngIf="title.errors?.['required']">Pole dla title wymagane</p>
+    <label>
+      Body:
+    </label>
+    <input [(ngModel)]="copyOfComment.body" #body="ngModel" name="body" id="body" required maxlength="20"/>
+    <p *ngIf="body.errors?.['required']">Pole dla body wymagane</p>
+    <p *ngIf="body.errors?.['maxlength']">Maksymalna ilosc body: 20. Aktualna ilosc: {{ copyOfComment.body.length }}</p>
+    <button *ngIf="f.valid" (click)="save()">Save</button>
+  </form>
+</div>

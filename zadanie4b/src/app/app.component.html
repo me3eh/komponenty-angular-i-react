@@ -1,0 +1,13 @@
+<div>
+  <ul>
+    <li *ngFor="let comment of listOfComments;index as i" (click)="select(i)" [class.selected]="i === selected">
+      Customer: {{ comment.userId }} {{ comment.id }} {{ comment.title }} {{ comment.body }}
+      <div *ngIf="selected == i" >
+        <app-edit [comment]="listOfComments[selected]"
+                  (editValueInArray)="editValueInArray($event)"></app-edit>
+      </div>
+      <br/><br/><br/>
+    </li>
+    <button (click)="addOrder()">Add a new order</button>
+  </ul>
+</div>
